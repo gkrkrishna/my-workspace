@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 declare const ValidatePANChecksum: any;
@@ -11,6 +11,8 @@ declare const PIE: any;
   styleUrls: ['./credit-card.component.css']
 })
 export class CreditCardComponent {
+  @Output() creditCardAdded = new EventEmitter<any>();
+
   cardNo: string = '';
   cvv: string = '';
   expiryMonth: string = '';
@@ -45,12 +47,7 @@ export class CreditCardComponent {
         phase: PIE.phase
       };
 
-      this.http.post('https://your-backend-endpoint.com/api/credit-cards', payload)
-        .subscribe(response => {
-          console.log('Card added successfully', response);
-        }, error => {
-          console.error('Error adding card', error);
-        });
+      this.creditCardAdded.emit(payload); // Emit the event with the payload
     }
   }
 
