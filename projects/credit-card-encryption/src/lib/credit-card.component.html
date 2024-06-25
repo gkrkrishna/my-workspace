@@ -1,0 +1,67 @@
+<div class="container">
+    <form class="form-horizontal" (ngSubmit)="addCreditCard()">
+      <h1>Dummy Page Encryption</h1>
+      <div class="demo-card-information">
+        <div class="merchant-details">
+          <h2>PCI Information</h2>
+          <div class="row">
+            <label for="cardNo">Card Number</label>
+            <input id="cardNo" name="cardNo" type="text" [(ngModel)]="cardNo" class="form-control" />
+          </div>
+          <div class="row">
+            <label for="cvv">CVV</label>
+            <input id="cvv" name="cvv" type="text" [(ngModel)]="cvv" class="form-control" />
+          </div>
+          <div class="row">
+            <label for="expiryMonth">Expiry Month</label>
+            <select id="expiryMonth" name="expiryMonth" [(ngModel)]="expiryMonth" class="form-control">
+              <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="expiryYear">Expiry Year</label>
+            <select id="expiryYear" name="expiryYear" [(ngModel)]="expiryYear" class="form-control">
+              <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="nickname">Nickname</label>
+            <input id="nickname" name="nickname" type="text" [(ngModel)]="nickname" class="form-control" />
+          </div>
+          <div class="row">
+            <label for="autoPayEnabled">Auto Pay Enabled</label>
+            <input type="checkbox" id="autoPayEnabled" name="autoPayEnabled" [(ngModel)]="autoPayEnabled" />
+          </div>
+          <div class="row">
+            <label for="extendedPaymentPlan">Extended Payment Plan</label>
+            <input type="checkbox" id="extendedPaymentPlan" name="extendedPaymentPlan" [(ngModel)]="extendedPaymentPlan" />
+          </div>
+          <div class="row">
+            <label for="embed">Embed key</label>
+            <input type="checkbox" id="embed" name="embed" [(ngModel)]="embed" />
+          </div>
+          <div class="row">
+            <button type="submit" class="btn btn-primary">Add Credit Card</button>
+          </div>
+        </div>
+      </div>
+      <div class="demo-card-results">
+        <div class="merchant-details">
+          <h3>Encrypted card details... (Hidden from END User)</h3>
+          <div class="row">
+            <label for="cryptCard">Encrypted Card</label>
+            <input id="cryptCard" name="cryptCard" type="text" [(ngModel)]="encryptedCard" class="form-control" readonly />
+          </div>
+          <div class="row">
+            <label for="cryptCvv">Encrypted CVV</label>
+            <input id="cryptCvv" name="cryptCvv" type="text" [(ngModel)]="encryptedCvv" class="form-control" readonly />
+          </div>
+          <div class="row">
+            <label for="integrityCheckVal">Integrity Check</label>
+            <input id="integrityCheckVal" name="integrityCheckVal" type="text" [(ngModel)]="integrityCheckVal" class="form-control" readonly />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  
